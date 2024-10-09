@@ -1,24 +1,31 @@
 const express = require("express");
+const connect = require("./database/mongooseConnection.js");
 const { AuthRouter } = require("./router/AuthRouter.js");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const { VegeRouter } = require("./router/VegeRouter.js");
-const { FruitRouter } = require("./router/FruitRouter.js");
+const ImageUploadRouter = require("./router/ImageUploadRouter.js");
+
 const app = express();
 
 dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(bodyParser.json({ limit: "50mb" }));
+
+app.use(cors());
+
 app.use(AuthRouter);
 app.use(VegeRouter);
-app.use(FruitRouter);
+app.use(ImageUploadRouter);
 
-app.listen(8080, (err) => {
+const port = process.env.PORT || 8080;
+
+app.listen(port, (err) => {
   if (err) console.log(err);
   else {
-    console.log("dukaan-svc is running on port 8080");
+    console.log(`dukaan-svc is running on port ${port}`);
+    connect();
   }
 });
