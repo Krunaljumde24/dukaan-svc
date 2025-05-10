@@ -1,0 +1,1 @@
+# dukaan-svc - v1.00
