@@ -1,7 +1,5 @@
 const mysql = require("mysql2");
-const dotenv = require("dotenv");
-
-dotenv.config();
+require("dotenv").config();
 
 const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD } = process.env;
 

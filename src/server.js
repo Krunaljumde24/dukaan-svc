@@ -7,7 +7,7 @@ const { VegeRouter } = require("./router/VegeRouter.js");
 const { FruitRouter } = require("./router/FruitRouter.js");
 const app = express();
 
-dotenv.config();
+// dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
